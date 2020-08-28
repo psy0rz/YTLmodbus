@@ -3,7 +3,9 @@
 #read kwh meters and send values to influxdb
 #for DDS353H-1 / DDS353H-2 / DDS353H-3 / YTL5281 / YTL5282 / YTL5283
 
-#Look in 'DDS353H-3 MODBUS registers.xls' for technical details. (original document)
+#also can ready YTL5300 / DTS353F-2
+
+#Look in 'DDS353H-3 MODBUS registers.xls' and 'YTL5300 registry matrix.xls' for technical details. (original documents)
 #Somehow this document was nowhere to be found on internet and required many many mails to finally aquire. sigh..
 
 
