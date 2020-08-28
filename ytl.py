@@ -3,6 +3,9 @@
 #read kwh meters and send values to influxdb
 #for DDS353H-1 / DDS353H-2 / DDS353H-3 / YTL5281 / YTL5282 / YTL5283
 
+#Look in 'DDS353H-3 MODBUS registers.xls' for technical details. (original document)
+#Somehow this document was nowhere to be found on internet and required many many mails to finally aquire. sigh..
+
 
 import time
 import minimalmodbus
@@ -70,7 +73,38 @@ while True:
 
             influx_measurements=[]
             start_time=time.time()
-            for id in range(1,13):
+  
+            for id in config.YTL5300_ids:
+                rs485.address=id
+
+                influx_measurement={
+                    "measurement": "Meter values ytl5300",
+                    "tags": {
+                        "Meter id": id
+                    },
+                    "fields": {
+                        # "Frequency": rs485.read_float(0x0014),
+                        "V1": rs485.read_float(0x000E),
+                        "V2": rs485.read_float(0x0010),
+                        "V3": rs485.read_float(0x0012),
+                        # "I1": float(rs485.read_long(0x139))/1000,
+                        "P1": rs485.read_float(0x001E)*1000, #active
+                        "P2": rs485.read_float(0x0020)*1000, #active
+                        "P3": rs485.read_float(0x0022)*1000, #active
+                        "PF1":rs485.read_float(0x0036),
+                        "PF2":rs485.read_float(0x0038),
+                        "PF3":rs485.read_float(0x003A),
+                        "TA": rs485.read_float(0x0100), #active energy
+                        "TR": rs485.read_float(0x0118), #reactive
+                    }
+                }
+
+                pprint.pprint(influx_measurement)
+                influx_measurements.append(influx_measurement)
+                time.sleep(0.03)
+
+  
+            for id in config.DDS353H_ids:
                 rs485.address=id
 
                 influx_measurement={

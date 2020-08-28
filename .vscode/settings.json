@@ -1,0 +1,5 @@
+{
+    "sync-rsync.onSave": true,
+    "sync-rsync.onLoad": true,
+    "sync-rsync.remote": "root@d1:YTLmodbus"
+}
