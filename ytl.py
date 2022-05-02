@@ -116,13 +116,13 @@ while True:
                         "Meter id": id
                     },
                     "fields": {
-                        "Frequency": rs485.read_register(0x130, number_of_decimals=2),
-                        "V1": rs485.read_register(0x131, number_of_decimals=2),
-                        "I1": float(rs485.read_long(0x139))/1000,
+                        "Frequency": float(rs485.read_register(0x130, number_of_decimals=2)),
+                        "V1": float(rs485.read_register(0x131, number_of_decimals=2)),
+                        "I1": float(rs485.read_long(0x139,3,True))/1000,
                         "P1": rs485.read_long(0x140),
                         "Q1": rs485.read_long(0x148),
                         "S1": rs485.read_long(0x150),
-                        "PF1": rs485.read_register(0x158,number_of_decimals=3),
+                        "PF1": float(rs485.read_register(0x158,number_of_decimals=3)),
                         "TA": float(rs485.read_long(0xA000))/100,
                         "TR": float(rs485.read_long(0xA01E))/100,
                     }
