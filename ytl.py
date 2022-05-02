@@ -103,7 +103,8 @@ while True:
 
                 pprint.pprint(influx_measurement)
                 influx_measurements.append(influx_measurement)
-                time.sleep(0.03)
+                #tune this if you get device timeouts
+                time.sleep(0.1)
 
   
             for id in config.DDS353H_ids:
@@ -129,7 +130,8 @@ while True:
 
                 pprint.pprint(influx_measurement)
                 influx_measurements.append(influx_measurement)
-                time.sleep(0.03)
+                #tune this if you get device timeouts
+                time.sleep(0.1)
 
 
             print("Writing")
