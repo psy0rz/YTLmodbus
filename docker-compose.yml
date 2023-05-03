@@ -1,0 +1,26 @@
+services:
+
+  app: 
+   environment:
+    - DB_HOST=influxdb
+    - SERIAL_PORT=/dev/ttyUSB0
+    - DB_PORT=8086
+    - DB_USER=energy
+    - DB_NAME=energy
+    - DB_PASSWORD=bla
+    - DDS353H_IDS=1,2,3,4,5,6,7,8,9,10,11,12
+    - YTL5300_IDS=13
+   stop_signal: kill
+   build: .
+
+   # Dont forget to map the correct device:
+#   devices:
+#    - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AL02WKWL-if00-port0:/dev/ttyUSB0
+
+
+
+
+
+
+
+
