@@ -8,6 +8,5 @@ port=os.environ['DB_PORT']
 username=os.environ['DB_USER']
 password=os.environ['DB_PASSWORD']
 database=os.environ['DB_NAME']
-
-DDS353H_ids=os.environ['DDS353H_IDS'].split(",")
-YTL5300_ids=os.environ['YTL5300_IDS'].split(",")
+DDS353H_ids=[int(num) for num in os.environ['DDS353H_IDS'].split(",")]
+YTL5300_ids=[int(num) for num in os.environ['YTL5300_IDS'].split(",")]
